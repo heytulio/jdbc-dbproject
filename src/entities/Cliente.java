@@ -1,6 +1,10 @@
 package entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 public class Cliente {
 	private String cpf;
@@ -12,6 +16,7 @@ public class Cliente {
 	private String cidade;
 	private String bairro;
 	private String cep;
+	private List<String> telefones = new ArrayList<>();
 	
 	public Cliente() {}
 	public Cliente(String cpf, String nome, LocalDate dataNascimento, String agenciaMatricula, String numeroEnd,
@@ -81,6 +86,11 @@ public class Cliente {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	public List<String> getTelefones(){
+		//retorno uma Collections.unmodifiedList?
+		return telefones;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -106,9 +116,25 @@ public class Cliente {
 	}
 	@Override
 	public String toString() {
-		return "Cliente [cpf=" + cpf + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", agenciaMatricula="
-				+ agenciaMatricula + ", numeroEnd=" + numeroEnd + ", logradouro=" + logradouro + ", cidade=" + cidade
-				+ ", bairro=" + bairro + ", cep=" + cep + "]";
+		return "Cliente:\n"
+				+ "CPF: " + cpf + ";\n"
+				+ "NOME: " + nome + ";\n"
+				+ "DATA DE NASCIMENTO: " + dataNascimento + ";\n"
+				+ "MATRICULA DA AGENCIA: "+ agenciaMatricula + ";\n"
+				+ "LOGRADOURO: " + logradouro+ ";\n"
+				+ "NUMERO: " + numeroEnd  + ";\n"
+				+ "CIDADE: " + cidade + ";\n"
+				+ "BAIRRO: " + bairro + ";\n"
+				+ "CEP: " + cep + ";\n"
+				+ "TELEFONES: "+Arrays.toString(telefones.toArray()) + ";\n";
+	}
+	
+	public void addTelefone(String t) {
+		telefones.add(t);
+	}
+	
+	public void removeTelefone(String t) {
+		telefones.removeIf(x -> x.equals(t));
 	}
 	
 	
