@@ -1,4 +1,4 @@
-package Dao;
+package persistencia;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Conexao {
+public class teste {
+
 	public static void main(String[] args) {
 		//TODO tira esse void main daqui e corrige baseado no sigleton
 
@@ -30,10 +31,11 @@ public class Conexao {
 		String query = "select nome from cliente";
 		ResultSet result = stm.executeQuery(query);
 		while(result.next()) {
-			System.out.println(result.getString("nome "));
+			System.out.println(result.getString("nome"));
 		}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
 }
