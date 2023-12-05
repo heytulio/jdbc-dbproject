@@ -45,6 +45,7 @@ public class ClienteServices {
 			return null;
 		}
 	}
+	//nao sei pra que usar esse aqui
 	public Cliente recuperarCliente(String cpf) {
 		try {
 			return dao.recuperar(cpf);

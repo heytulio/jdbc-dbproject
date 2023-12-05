@@ -1,35 +1,73 @@
 package aplication;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
-import entities.Cliente;
-import services.ClienteServices;
+import controller.ClienteCRUD;
 
 public class Main {
 
 	public static void main(String[] args) throws ClassNotFoundException, ParseException {
-SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-		
-		ClienteServices service = new ClienteServices();
-		
-		Cliente cliente = new Cliente("11399999999","joartfd ctjcg",sdf.parse("20/04/1990"),"17729823000205","11","dfghj","asdfghj","dfghjk","33333000");
+		ClienteCRUD c = new ClienteCRUD();
+		Scanner input = new Scanner(System.in);
+		System.out.println("--------------------------");
+		System.out.println("Bem Vindo a Aplicacao!");
+		while (true) {
+			menu();
+			char op = input.next().charAt(0);
+			switch (op){
+				case '1': 
+					System.out.println("--------------------------");
+					System.out.println("Menu de Clientes:");
+					System.out.println("--------------------------");
+					System.out.println("1 - Cadastrar Cliente;\n"
+							+ "2 - Atualizar Cliente;\n"
+							+ "3 - Listar Cliente;\n"
+							+ "4 - Deletar Cliente;\n"
+							+ "0 - Voltar;");
+					System.out.print("-> ");
+					char cOP = input.next().charAt(0);
+					System.out.println("--------------------------");
+					if(cOP == '1') c.cadastrar();
+					else if(cOP == '2') c.atualizar();
+					else if(cOP == '3') c.listar();
+					else if(cOP == '4') c.deletar();
+					else if (cOP == '5') c.deletarTodos();
+					else if (cOP == '0') break;
+					else System.out.println("Operação sem correspondencia");
+					break;
 
-		service.salvarCliente(cliente);
-		System.out.println("salvou");
-		//service.removerCliente("11399999999");
-		//Cliente atualizado = new Cliente("11399999999","atualizado",sdf.parse("20/04/1990"),"17729823000205","11","atualizado","asdfghj","dfghjk","33333000");
-		//service.atualizarCliente(atualizado);
-		//System.out.println("atualizou");
-		List<Cliente> clientes = new ArrayList<>(service.listarClientes());
-		for(Cliente i: clientes) {
-			System.out.println(i.toString());
+				case '2':
+					System.out.println("--------------------------");
+					System.out.println("Menu de Consultas:");
+					System.out.println("--------------------------");
+					System.out.println("1 - Listar todos os clientes;\n"
+							+ "2 - Consulta por CPF;\n"
+							+ "3 - Consulta;\n"
+							+ "4 - Consulta;\n"
+							+ "0 - Voltar;");
+					System.out.print("-> ");
+					char cOP1 = input.next().charAt(0);
+					System.out.println("--------------------------");
+					if (cOP1 == '0') break;
+					break;
+				case '0':
+					break;
+				default:
+					System.out.println("NO MATCHES");
+					break;
+			}
+			if (op == '0') break;
 		}
-		//System.out.println("listou");
-		System.out.println(service.recuperarCliente("11399999999"));
-		//service.removerTodos();
+		System.out.println("ENCERRANDO O PROGRAMA;");
+		input.close();
+	}
+	public static void menu() {
+		System.out.println("--------------------------");
+		System.out.println("1 - Menu de Clientes;\n"
+				+ "2 - Menu de Consultas;\n"
+				+ "0 - Encerrar o programa;");
+		System.out.print("-> ");
 	}
 
 }

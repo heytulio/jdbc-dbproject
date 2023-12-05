@@ -9,8 +9,6 @@ import java.sql.Statement;
 public class teste {
 
 	public static void main(String[] args) {
-		//TODO tira esse void main daqui e corrige baseado no sigleton
-
 		try {
 			Connection conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bd.jdbc", "postgres",
 					"6528");
