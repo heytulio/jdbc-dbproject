@@ -125,8 +125,7 @@ public class Cliente {
 					+ "NUMERO: " + numeroEnd  + ";\n"
 					+ "CIDADE: " + cidade + ";\n"
 					+ "BAIRRO: " + bairro + ";\n"
-					+ "CEP: " + cep + ";\n"
-					+ "TELEFONES: "+Arrays.toString(telefones.toArray()) + ";\n";
+					+ "CEP: " + cep + ";\n";
 		}
 		
 		public void addTelefone(String t) {

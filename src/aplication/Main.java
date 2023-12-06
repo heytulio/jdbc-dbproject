@@ -47,19 +47,27 @@ public class Main {
 					System.out.println("--------------------------");
 					System.out.println("1 - Listar todos os clientes;\n"
 							+ "2 - Consulta por CPF;\n"
-							+ "4 - Consulta academias;\n"
-							+ "4 - Consulta;\n"
+							+ "3 - Consulta academias;\n"
 							+ "0 - Voltar;");
 					System.out.print("-> ");
 					char cOP1 = input.next().charAt(0);
 					System.out.println("--------------------------");
 					if (cOP1 == '0') break;
-					if (cOP1 == '4') {
+					if (cOP1 == '1') {
+						c.listar();
+						break;
+					}
+					if (cOP1 == '2') {
+						c.recuperar();
+						break;
+					}
+					if (cOP1 == '3') {
 						c.listarAcademias();
 						break;
 					}
 
 					break;
+					
 				case '0':
 					break;
 				default:

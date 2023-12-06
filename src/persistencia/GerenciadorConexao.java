@@ -7,11 +7,11 @@ import java.sql.SQLException;
 public class GerenciadorConexao {
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "org.postgresql.Driver";
-	static final String DB_URL = "jdbc:postgresql://localhost:5432/bd.jdbc";
+	static final String DB_URL = "jdbc:postgresql://localhost:5432/Rede_Academia";//bd.jdbc
 
 	// Database credentials
 	static final String USER = "postgres";
-	static final String PASS = "6528";
+	static final String PASS = "Pauloheleno07";// 6528
 
 	private static GerenciadorConexao instance = null;
 

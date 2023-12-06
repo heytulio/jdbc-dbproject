@@ -72,6 +72,8 @@ public class ClienteCRUD implements ICRUD{
 		// TODO criar um DAO de Academia e um service de academia tbm
 		while (true) {
 			try {
+				listarAcademias();
+				System.out.println();
 				System.out.print("Informe o numero da matricula da academia: ");
 				agenciaMatricula = input.nextLine();
 				Validacao.validaAgencia(agenciaMatricula);
@@ -100,6 +102,7 @@ public class ClienteCRUD implements ICRUD{
 		}
 		Cliente c = new Cliente(cpf, nome, dataNascimento, agenciaMatricula, numeroEnd, logradouro, cidade, bairro,
 				cep);
+		/*
 		System.out.print("Informe um telefone: ");
 		while (true) {
 			try {
@@ -118,7 +121,7 @@ public class ClienteCRUD implements ICRUD{
 			} catch (DomainException e) {
 				System.out.println(e.getMessage());
 			}
-		}
+		}*/
 		System.out.println("--------------------------");
 		boolean caseC = cs.salvarCliente(c);
 		if(caseC == true) {
@@ -372,5 +375,19 @@ public class ClienteCRUD implements ICRUD{
 		List<Academia> academias =as.listarAcademias();
 		for(Academia i:academias)
 			System.out.println(i);
+	}
+	public void recuperar() {
+		String cpf = null ;
+		while(true) {
+		try {
+			System.out.print("Informe o cpf do cliente a ser recuperado: ");
+			cpf = input.nextLine();
+			Validacao.validaCpf(cpf);
+			break;
+		} catch (DomainException e) {
+			System.out.println(e.getMessage());
+		}
+		}
+		System.out.println(cs.recuperarCliente(cpf));
 	}
 }
