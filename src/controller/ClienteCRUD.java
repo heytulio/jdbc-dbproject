@@ -7,8 +7,10 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import entities.Academia;
 import entities.Cliente;
 import exceptions.DomainException;
+import services.AcademiaServices;
 import services.ClienteServices;
 import util.Validacao;
 
@@ -80,7 +82,7 @@ public class ClienteCRUD implements ICRUD{
 		}
 		System.out.print("Informe o logradouro: ");
 		var logradouro = input.nextLine();
-		System.out.print("Informe o numero do endereço: ");
+		System.out.print("Informe o numero do endereï¿½o: ");
 		var numeroEnd = input.nextLine();
 		System.out.print("Informe a cidade: ");
 		var cidade = input.nextLine();
@@ -212,7 +214,7 @@ public class ClienteCRUD implements ICRUD{
 							System.out.println("CAMPO ATUALIZADO;");
 							System.out.println("--------------------------");
 						} else if (campo.equalsIgnoreCase("NUMERO")) {
-							System.out.print("Informe o numero do endereço: ");
+							System.out.print("Informe o numero do endereï¿½o: ");
 							var numeroEnd = input.nextLine();
 							if (c.getNumeroEnd().equalsIgnoreCase(numeroEnd)) {
 								System.out.println("MESMO PARAMETRO;");
@@ -266,13 +268,13 @@ public class ClienteCRUD implements ICRUD{
 								System.out.println(i + "-> " + telefones.get(i));
 							}
 							try {
-								System.out.print("Informe o ID do numero para a atualização: ");
+								System.out.print("Informe o ID do numero para a atualizaï¿½ï¿½o: ");
 								int match = input.nextInt();
 								input.nextLine();
 								String telefone;
 								while (true) {
 									try {
-										System.out.print("Informe o telefone para a atualização: ");
+										System.out.print("Informe o telefone para a atualizaï¿½ï¿½o: ");
 										telefone = input.nextLine();
 										Validacao.validaTelefone(telefone);
 										break;
@@ -281,7 +283,7 @@ public class ClienteCRUD implements ICRUD{
 									}
 								}
 								if (match < 0 || match >= telefones.size()) {
-									System.out.println("ID INFORMADO É INVALIDO;");
+									System.out.println("ID INFORMADO ï¿½ INVALIDO;");
 								} else {
 									telefones.set(match, telefone);
 									System.out.println("CAMPO ATUALIZADO;");
@@ -295,16 +297,16 @@ public class ClienteCRUD implements ICRUD{
 						} else if (campo.equalsIgnoreCase("SAIR")) {
 							break;
 						} else {
-							System.out.println("OPÇÃO SEM CORRESPONDENCIA");
+							System.out.println("OPï¿½ï¿½O SEM CORRESPONDENCIA");
 						}
 					}
-					System.out.print("Deseja manter as alterações (S/N)? ");
+					System.out.print("Deseja manter as alteraï¿½ï¿½es (S/N)? ");
 					char manter = input.next().charAt(0);
 					if(Character.toUpperCase(manter) == 'S') {
 						cs.atualizarCliente(c);
 						System.out.println("Cliente atualizado!");
 					} else {
-						System.out.println("OK. Os dados do cliente serão mantidos;");
+						System.out.println("OK. Os dados do cliente serï¿½o mantidos;");
 					}
 					
 				}
@@ -340,7 +342,7 @@ public class ClienteCRUD implements ICRUD{
 					if(caseR == true) {
 						System.out.println("Cliente removido com sucesso!");
 					} else {
-						System.out.println("Erro na remoção!");
+						System.out.println("Erro na remoï¿½ï¿½o!");
 					}
 					break;
 				}
@@ -349,14 +351,26 @@ public class ClienteCRUD implements ICRUD{
 	}
 	
 	public void deletarTodos() {
-		System.out.println("Essa é uma operação destrutiva do banco de dados;");
+		System.out.println("Essa ï¿½ uma operaï¿½ï¿½o destrutiva do banco de dados;");
 		System.out.print("Deseja continuar (S/N)? ");
 		char cont = input.next().charAt(0);
 		if(Character.toUpperCase(cont) == 'S') {
 			cs.removerTodos();
 			System.out.println("Todos os clientes foram removidos;");
 		} else {
-			System.out.println("OK. Operação cancelada;");
+			System.out.println("OK. Operaï¿½ï¿½o cancelada;");
 		}
+	}
+	public void listarAcademias() {
+		AcademiaServices as=null;
+		try {
+			as = new AcademiaServices();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<Academia> academias =as.listarAcademias();
+		for(Academia i:academias)
+			System.out.println(i);
 	}
 }

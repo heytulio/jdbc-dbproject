@@ -1,9 +1,13 @@
 package aplication;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import controller.ClienteCRUD;
+import entities.Academia;
+import services.AcademiaServices;
 
 public class Main {
 
@@ -34,7 +38,7 @@ public class Main {
 					else if(cOP == '4') c.deletar();
 					else if (cOP == '5') c.deletarTodos();
 					else if (cOP == '0') break;
-					else System.out.println("Operação sem correspondencia");
+					else System.out.println("Operaï¿½ï¿½o sem correspondencia");
 					break;
 
 				case '2':
@@ -43,13 +47,18 @@ public class Main {
 					System.out.println("--------------------------");
 					System.out.println("1 - Listar todos os clientes;\n"
 							+ "2 - Consulta por CPF;\n"
-							+ "3 - Consulta;\n"
+							+ "4 - Consulta academias;\n"
 							+ "4 - Consulta;\n"
 							+ "0 - Voltar;");
 					System.out.print("-> ");
 					char cOP1 = input.next().charAt(0);
 					System.out.println("--------------------------");
 					if (cOP1 == '0') break;
+					if (cOP1 == '4') {
+						c.listarAcademias();
+						break;
+					}
+
 					break;
 				case '0':
 					break;
